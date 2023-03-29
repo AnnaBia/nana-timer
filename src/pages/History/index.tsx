@@ -1,4 +1,4 @@
-import { HistoryContainer, HistoryList } from './styles'
+import { HistoryContainer, HistoryList, Status } from './styles'
 
 const tasks = [
   {
@@ -53,7 +53,9 @@ export function History() {
                   <td>{task.task}</td>
                   <td>{task.duration}</td>
                   <td>{task.initial}</td>
-                  <td>{task.status}</td>
+                  <td>
+                    <Status statusColor="green">{task.status}</Status>
+                  </td>
                 </tr>
               )
             })}

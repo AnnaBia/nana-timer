@@ -8,6 +8,7 @@ export const CountdownContainer = styled.div`
 
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 
   span {
     background: ${(props) => props.theme['gray-700']};
@@ -18,7 +19,7 @@ export const CountdownContainer = styled.div`
 
 export const Separator = styled.div`
   padding: 2rem 0;
-  color: ${(props) => props.theme['green-500']};
+  color: ${(props) => props.theme['yellow-600']};
 
   width: 4rem;
   overflow: hidden;

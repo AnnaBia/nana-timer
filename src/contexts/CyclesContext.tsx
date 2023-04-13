@@ -17,11 +17,12 @@ interface CreateCycleData {
   task: string
   minutesAmount: number
 }
+
 interface CyclesContextType {
   cycles: Cycle[]
   activeCycle: Cycle | undefined
-  activeCycleId: String | null
-  amountSecondsPassed: number
+  activeCycleId: string | null
+  amountSecondsPassed: number | undefined
   markCurrentCycleAsFinished: () => void /* função sem retorno */
   setSecondsPassed: (seconds: number) => void
   createNewCycle: (data: CreateCycleData) => void
@@ -33,7 +34,7 @@ export const CyclesContext = createContext({} as CyclesContextType)
 interface CycleContextProviderProps {
   children: ReactNode
 }
-export function CyclesContextProvider({ children }: CycleContextProviderProps) {
+export function CyclesContextProvider({ children, }: CycleContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
     cyclesReducer,
     {
@@ -59,9 +60,9 @@ export function CyclesContextProvider({ children }: CycleContextProviderProps) {
 
   /* remove delay countdown on reload */
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
-    if (activeCycle) {
-      return differenceInSeconds(new Date(), new Date(activeCycle.startDate))
-    }
+      if (activeCycle) {
+        return differenceInSeconds(new Date(), new Date(activeCycle.startDate))
+      }
   })
 
   useEffect(() => {
@@ -95,7 +96,8 @@ export function CyclesContextProvider({ children }: CycleContextProviderProps) {
   function interruptCurrentCycle() {
     dispatch(interruptCurrentCycleAction())
   }
-
+  
+  console.log('aqui',amountSecondsPassed)
   return (
     <CyclesContext.Provider
       value={{

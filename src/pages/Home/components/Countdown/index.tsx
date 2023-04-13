@@ -12,24 +12,8 @@ export function Countdown() {
     amountSecondsPassed,
     setSecondsPassed,
   } = useContext(CyclesContext)
+
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
-
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
-
-  /* floor return the small numberof the difference  */
-  const minutesAmount = Math.floor(currentSeconds / 60)
-  const secondsAmount = currentSeconds % 60
-
-  /* Fills the beginning of the string according to the number of characters, followed by the value to be inserted */
-  const minutes = String(minutesAmount).padStart(2, '0')
-  const seconds = String(secondsAmount).padStart(2, '0')
-
-  useEffect(() => {
-    /* change tab title */
-    if (activeCycle) {
-      document.title = `${minutes}:${seconds}`
-    }
-  }, [activeCycle, minutes, seconds])
 
   useEffect(() => {
     /* Calc to dowgrade the correct time */
@@ -62,6 +46,25 @@ export function Countdown() {
     markCurrentCycleAsFinished,
     setSecondsPassed,
   ])
+  
+  let serializerAmountSecondsPassed = amountSecondsPassed === undefined ? 0 : amountSecondsPassed
+
+  const currentSeconds = activeCycle ? totalSeconds - serializerAmountSecondsPassed : 0
+  
+  /* floor return the small numberof the difference  */
+  const minutesAmount = Math.floor(currentSeconds / 60)
+  const secondsAmount = currentSeconds % 60
+
+  /* Fills the beginning of the string according to the number of characters, followed by the value to be inserted */
+  const minutes = String(minutesAmount).padStart(2, '0')
+  const seconds = String(secondsAmount).padStart(2, '0')
+
+  useEffect(() => {
+    /* change tab title */
+    if (activeCycle) {
+      document.title = `${minutes}:${seconds}`
+    }
+  }, [activeCycle, minutes, seconds])
 
   return (
     <>

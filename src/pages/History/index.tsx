@@ -32,7 +32,7 @@ export function History() {
                   {/* <td>{cycle.startDate.toISOString()}</td> */}
                   <td>
                     {/* calculates the distance from now with the starting time */}
-                    {formatDistanceToNow(cycle.startDate, {
+                    {formatDistanceToNow(new Date(cycle.startDate), {
                       addSuffix: true,
                       locale: ptBR,
                     })}

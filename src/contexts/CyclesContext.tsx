@@ -34,7 +34,7 @@ export const CyclesContext = createContext({} as CyclesContextType)
 interface CycleContextProviderProps {
   children: ReactNode
 }
-export function CyclesContextProvider({ children, }: CycleContextProviderProps) {
+export function CyclesContextProvider({ children }: CycleContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
     cyclesReducer,
     {
@@ -97,7 +97,6 @@ export function CyclesContextProvider({ children, }: CycleContextProviderProps) 
     dispatch(interruptCurrentCycleAction())
   }
   
-  console.log('aqui',amountSecondsPassed)
   return (
     <CyclesContext.Provider
       value={{

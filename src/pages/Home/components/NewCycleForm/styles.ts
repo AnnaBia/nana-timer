@@ -10,12 +10,13 @@ export const FormContainer = styled.div`
   font-size: 1.125rem;
   font-weight: bold;
   flex-wrap: wrap;
+  padding: 1.5rem 0;
 `
 
 const BaseInput = styled.input`
   background: transparent;
   height:2.5rem;
-  border:0;
+  border:0;ss
   border-bottom:2px solid ${(props) => props.theme['gray-500']};
   font-weight:bold;
   font-size:1.125rem;
